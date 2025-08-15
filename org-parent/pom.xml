@@ -1,0 +1,64 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yourorg.build</groupId>
+  <artifactId>org-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven.checkstyle.version>3.3.1</maven.checkstyle.version>
+    <checkstyle.tool.version>10.17.0</checkstyle.tool.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.yourorg.quality</groupId>
+        <artifactId>checkstyle-config</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven.checkstyle.version}</version>
+          <dependencies>
+            <!-- Pin Checkstyle engine -->
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.tool.version}</version>
+            </dependency>
+            <!-- Load our rules from classpath -->
+            <dependency>
+              <groupId>com.yourorg.quality</groupId>
+              <artifactId>checkstyle-config</artifactId>
+              <version>1.0.0</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <configLocation>checkstyle/checkstyle.xml</configLocation>
+            <suppressionsLocation>checkstyle/suppressions.xml</suppressionsLocation>
+            <encoding>UTF-8</encoding>
+            <consoleOutput>true</consoleOutput>
+            <failsOnError>true</failsOnError>
+            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+            <linkXRef>false</linkXRef>
+          </configuration>
+          <executions>
+            <execution>
+              <id>checkstyle-verify</id>
+              <phase>verify</phase>
+              <goals><goal>check</goal></goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

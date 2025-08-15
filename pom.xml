@@ -1,0 +1,11 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yourorg.quality</groupId>
+  <artifactId>code-quality-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>checkstyle-config</module>
+    <module>org-parent</module>
+  </modules>
+</project>

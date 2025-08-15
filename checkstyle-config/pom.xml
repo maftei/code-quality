@@ -1,0 +1,8 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yourorg.quality</groupId>
+  <artifactId>checkstyle-config</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>YourOrg Checkstyle Config</name>
+</project>
